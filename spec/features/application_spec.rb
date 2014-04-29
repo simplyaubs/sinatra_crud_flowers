@@ -3,10 +3,13 @@ require 'capybara/rspec'
 
 Capybara.app = Application
 
-feature 'Homepage' do
-  scenario 'Shows the welcome message' do
+feature 'Flowers' do
+  scenario 'User can see and add flowers' do
     visit '/'
-
-    expect(page).to have_content 'Welcome!'
+    click_on 'Add a Flower'
+    fill_in 'name', with: 'Lotus'
+    fill_in 'color', with: 'Pink'
+    click_on 'Add Flower'
+    expect(page).to have_content 'Lotus'
   end
 end
